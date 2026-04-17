@@ -43,7 +43,10 @@ export default function About() {
                 Codura is a complete digital solutions company dedicated to helping businesses grow with modern technology and creative strategies. We specialize in delivering high-quality services that combine innovation, reliability, and customer satisfaction.
               </p>
               <p>
-                From building stunning websites to promoting brands in the digital world, Codura offers end-to-end solutions tailored to your needs.
+                Our core mission is centered on connecting local businesses with the digital world. We believe that in today's landscape, every small business needs a professional website and a strong suite of online services to thrive.
+              </p>
+              <p>
+                By bridging the gap between local heritage and global-standard technology, Codura provides the end-to-end solutions necessary to empower enterprises of all sizes to reach their full potential.
               </p>
             </div>
 
