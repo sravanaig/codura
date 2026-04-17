@@ -115,40 +115,56 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 right-0 glass border-t-0 p-6 flex flex-col gap-4 md:hidden"
-        >
-          {navLinks.map((link) => (
-            <div key={link.name} className="flex flex-col gap-2">
-              <a
-                href={link.href}
-                className="text-lg font-medium"
-                onClick={() => !link.subLinks && setIsMobileMenuOpen(false)}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+            className="absolute top-full left-0 right-0 glass border-t-0 p-6 flex flex-col gap-4 md:hidden overflow-hidden"
+          >
+            {navLinks.map((link, i) => (
+              <motion.div 
+                key={link.name} 
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 + i * 0.05 }}
+                className="flex flex-col gap-2"
               >
-                {link.name}
-              </a>
-              {link.subLinks && (
-                <div className="flex flex-col gap-2 pl-4 border-l border-white/10">
-                  {link.subLinks.map((sub) => (
-                    <a
-                      key={sub.name}
-                      href={sub.href}
-                      className="text-sm text-muted-foreground"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {sub.name}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <Button className="w-full rounded-full">Book Now</Button>
-        </motion.div>
-      )}
+                <a
+                  href={link.href}
+                  className="text-lg font-medium"
+                  onClick={() => !link.subLinks && setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+                {link.subLinks && (
+                  <div className="flex flex-col gap-2 pl-4 border-l border-white/10">
+                    {link.subLinks.map((sub) => (
+                      <a
+                        key={sub.name}
+                        href={sub.href}
+                        className="text-sm text-muted-foreground"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <Button className="w-full rounded-full">Book Now</Button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

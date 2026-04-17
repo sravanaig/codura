@@ -57,7 +57,7 @@ const services = [
   // Security & Surveillance
   {
     id: 6,
-    title: "CCTV Installation",
+    title: "Security & Surveillance (CCTV) ",
     category: "Security & Surveillance",
     icon: Camera,
     description: "Secure and smart surveillance systems for your home or business.",
